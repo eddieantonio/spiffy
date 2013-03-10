@@ -29,8 +29,6 @@
       duration: 'fast'
       easing: 'swing'
 
-
-
   $.fn.spiffy = (options) ->
     # This is the root element
     root = this
@@ -40,37 +38,57 @@
     effectOptions = options?.effect ? DEFAULT_EFFECT_OPTIONS
     #effectOptions.duration = options?.duration
     #effectOptions.complete = options?.complete
-    
+
     # Basically, all this has to do is add a bunch of on click events, and make
     # the body show/hide on these events.
-    
-    categories = root.children('li')
 
-    categoryBodies = bindEvents categories, effectOptions
+    categories = root.children 'li'
+
+    cats = bindEvents categories, effectOptions
 
     # Hide all bodies (yes, all of them, if
     if options?.hideAll? is true
-      cat.hide() for cat in categoryBodies unless cat.alwaysShow
+      cat.hide() for cat in cats when not cat.alwaysShow
 
 
   # Bind events for each category.
   # "categories" is expected to be a jQuery selector.
   bindEvents = (categories, effectOptions) ->
-    console.log effectOptions
-    categories.map () ->
-      children = $(this).children()
-      header = children.first()
-      body = children.next()
-      # Maybe I should DESTROY elements after this but... nah.
-      
-      e.css 'display', 'block' for e in [header, body]
 
-      header.click () ->
-        body.slideToggle effectOptions
+    # The category class! It really should be here...
+    class Category
+      constructor: (element) ->
 
-      # Return the bodies of each for further processing
-      body
+        # Set the primary data fields
+        @all = $(element)
+        children = @all.children()
+        @header = children.first()
+        @body = children.next()
 
+        console.log @all
+
+        # Maybe I should DESTROY elements after this but... nah.
+
+        # Make sure we always show this.
+        @alwaysShow = @all.attr('data-spiffy-show') isnt undefined
+
+        # Bind the click event! YAY
+        @header.click () =>
+          console.log "i been clicked yo"
+          @toggle effectOptions
+
+      hide: () ->
+        @body.hide()
+
+      toggle: () ->
+        console.log "I have been toggled"
+        @body.slideToggle effectOptions
+
+      show: () ->
+        @body.slideDown effectOptions
+
+    for element in categories
+      new Category element
 
 
 )(jQuery)
