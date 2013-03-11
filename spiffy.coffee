@@ -12,13 +12,13 @@
   # will slide open".
   #
   # The markup should be:
-  # <ul|ol
+  # <ul|ol>
   #   <li>
   #     <any> This is the header. It can be element -- but it will be made
   #     display: block! </any>
   #
   #     <any> This is the content body. Similarly, this will be made display:
-  #     block. These will initially be inline block. </any>
+  #     block. </any>
   #   </li>
   #
   #   <li> ... </li>
@@ -36,8 +36,6 @@
     # Manage the options passed in. Effect options is just
     # a jQuery options object.
     effectOptions = options?.effect ? DEFAULT_EFFECT_OPTIONS
-    #effectOptions.duration = options?.duration
-    #effectOptions.complete = options?.complete
 
     # Basically, all this has to do is add a bunch of on click events, and make
     # the body show/hide on these events.
@@ -46,7 +44,7 @@
 
     cats = bindEvents categories, effectOptions
 
-    # Hide all bodies (yes, all of them, if
+    # Hide all bodies (yes, all of them).
     if options?.hideAll? is true
       cat.hide() for cat in cats when not cat.alwaysShow
 
@@ -64,9 +62,6 @@
         children = @all.children()
         @header = children.first()
         @body = children.next()
-
-        console.log @all
-
         # Maybe I should DESTROY elements after this but... nah.
 
         # Make sure we always show this.
@@ -81,7 +76,6 @@
         @body.hide()
 
       toggle: () ->
-        console.log "I have been toggled"
         @body.slideToggle effectOptions
 
       show: () ->
