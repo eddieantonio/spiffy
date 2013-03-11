@@ -8,5 +8,6 @@ all: $(OUT)
 %.min.js: %.js
 	uglifyjs $^ --comments -m -p -d jQuery -o $@
 
-%.coffee: %.js
-	coffee -b $<
+%.js: %.coffee
+	coffee -c -b $<
+

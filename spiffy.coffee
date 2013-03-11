@@ -69,7 +69,6 @@
 
         # Bind the click event! YAY
         @header.click () =>
-          console.log "i been clicked yo"
           @toggle effectOptions
 
       hide: () ->
