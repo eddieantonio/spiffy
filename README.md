@@ -1,5 +1,5 @@
 # Spiffy
-_A terrible jQuery plugin by Eddie Antonio Santos_
+_A terrible jQuery plugin by Eddie Antonio Santos._
 
 Spiffy turns a boring list of categories into a boring list of
 _sliding_ categories! You know what an accordion is? Spiffy is like
@@ -27,7 +27,7 @@ element). The following is an example of this:
 
 ## jQuery
 
-Then, to sick Spiffy on this sucker simply:
+Then, to sick Spiffy on this sucker simply do the following:
 
 ```js
 $('#spiffy-example').spiffy();
@@ -38,13 +38,13 @@ And you're done!
 
 ## Options
 
-This "library" is ridiculosly ad hoc, so the options are few, and
+Disclaimer: this "library" is ridiculosly ad hoc, so the options are few, and
 kinda written when I need them. This is an example of invoking Spiffy
 with _all_ options (at their defaults):
 
 ```js
 $('#spiffy-example').spiffy({
-  hideAll: false;
+  hideAll: false,
   effect: {
     ease: 'smooth',
     duration: 'fast'
@@ -57,7 +57,7 @@ $('#spiffy-example').spiffy({
    `data-spiffy-show` to it, to prevent it from being hidden on the
    initial request.
  * `effects` is a jQuery effects object. [Read more at jQuery's
-   docs][jQuery effects]
+   docs][jQuery effects].
 
 [jQuery effects]: http://api.jquery.com/slideDown/#slideDown-options
 
