@@ -27,7 +27,7 @@ element). The following is an example of this:
 
 ## jQuery
 
-Then, to sick Spiffy on this sucker simply do the following:
+Then, to sic Spiffy on this sucker simply do the following:
 
 ```js
 $('#spiffy-example').spiffy();
